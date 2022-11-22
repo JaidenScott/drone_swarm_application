@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Drones</title>
+</head>
+<body>
+    <form>
+        <div align="middle">
+            <img src="{{ url_for('static', filename='logo2.png') }}"/>
+        </div>
+        <table border="1px">
+            <thead>
+                <th>ID</th>
+                <th>Name</th>
+                <th>IP</th>
+                <th>Battery</th>
+            </thead>
+            <tbody>
+                {% for drone in drone_list %}
+                    <tr>
+                        <td width="50">{{ drone.drone_id }}</td>
+                        <td width="100">{{ drone.name }}</td>
+                        <td width="150">{{ drone.drone_ip }}</td>
+                        <td width="100">{{ drone.drone_battery }}</td>
+                    </tr>
+                    <!--<h2>{{ drone.drone_id }}</h2>
+                    <h4>{{ drone.name }}</h4>
+                    <h4>{{ drone.drone_ip }}</h4>
+                    <h4>battery: {{ drone.drone_battery }}</h4>-->
+                {% endfor %}
+            </tbody>
+
+        </table>
+        <a href="/add_drone"><input type="button" size="100" value="Add Drone"></a>
+        <a href="/delete_drone"><input type="button" value="Delete Drone"></a>
+        <h2>Create Sequence</h2>
+        {% for command in drone_commands %}
+            <p>{{ command }}</p>
+        {% endfor %}
+        <a href="/move_left"><input type="button" size="100" value="Left"></a>
+        <a href="/move_right"><input type="button" size="100" value="Right"></a>
+        <a href="/move_forward"><input type="button" size="100" value="Forward"></a>
+        <a href="/clear_all_commands"><input type="button" size="100" value="Clear Commands"></a>
+        <a href="/start_operation"><input type="button" size="100" value="Begin Operation"></a>
+    </form>
+
+</body>
+</html>
