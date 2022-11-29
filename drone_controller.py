@@ -132,7 +132,7 @@ def start_operation():
     This function will call the function that will begin going through the commands
     """
     operate_drones()
-    return redirect(url_for("index", text_color=text_color))
+    return redirect(url_for("index"))
 
 
 def operate_drones():
