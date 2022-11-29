@@ -35,6 +35,7 @@ def index():
     The main page of the flask application
     """
     drone_list = DroneModel.query.all()
+
     print(drone_list)
     return render_template('index.html', drone_list=drone_list, drone_commands=drone_commands)
 
@@ -131,7 +132,7 @@ def start_operation():
     This function will call the function that will begin going through the commands
     """
     operate_drones()
-    return redirect(url_for("index"))
+    return redirect(url_for("index", text_color=text_color))
 
 
 def operate_drones():
